@@ -166,7 +166,7 @@ h2{
         <ul class="navlist">
             <li><a href="#home">Home</a></li>
             <li><a href="#book">MyTicke</a></li>
-			<li><button class="btn-header" name="login">Login</button></li>
+			<li><a href="login.php"><button class="btn-header" name="login">Login</button></li></a>
         </ul>
     </header>
     <section class="home" id="home">
