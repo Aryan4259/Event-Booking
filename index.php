@@ -1,23 +1,25 @@
 <?php
-if (isset($_POST['signup'])) {
-  include 'connect.php';
+include 'connect.php';
+if (isset($_POST['signin'])) {
   $mo = $_POST['mobile'];
- 
+
   $pass = $_POST['password'];
-  $name = $_POST['name'];
-  
- 
-  $sql = "INSERT INTO `user`(`name`, `mobile`, `pass`) VALUES ('$name','$mo','$pass')";
-  $result = mysqli_query($con, $sql);
-  if($result)
-  {
-    header("location:index.php");
+
+
+  $select = "SELECT * FROM `user` ";
+  $qry = mysqli_query($con, $select);
+  while ($row = mysqli_fetch_array($qry)) {
+    if ($row['mobile'] == $mo && $row['pass'] == $pass) {
+      session_start();
+   $_SESSION['name']=$row['name'];
+      header('location:home.php');
+      exit;
+    }
   }
 }
 
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -130,23 +132,20 @@ if (isset($_POST['signup'])) {
 <body>
   <section>
     <div class="login-container">
-      <form class="login-form" action="signup.php" method="post">
-        <p class="heading">Sign Up</p>
-        <p class="paragraph">Sign Up to your account</p>
+      <form class="login-form" action="index.php" method="post">
+        <p class="heading">Login</p>
+        <p class="paragraph">Login to your account</p>
         <div class="input-group">
-          <input type="text" required="" placeholder="Mobile No" id="username" name="mobile"  />
+          <input required="" placeholder="Mobile" id="username" name="mobile" type="text" />
         </div>
         <div class="input-group">
-          <input type="text" required="" placeholder="Name" id="username" name="name"  />
+          <input required placeholder="Password" name="password" id="password" type="password" />
         </div>
-        <div class="input-group">
-          <input type="text" required="" placeholder="password" id="username" name="password"  />
-        </div>
-       
-        <button type="submit" name="signup">Sign Up</button>
+        <button type="submit" name="signin">Login</button>
         <div class="bottom-text">
-          <p>Don't have an account? <a href="login.php">Log in</a></p>
+          <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
           <p><a href="forgot.php">Forgot password?</a></p>
+          <p><a href="adminlogin.php">Admin Login</a></p>
         </div>
       </form>
     </div>

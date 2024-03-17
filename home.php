@@ -165,8 +165,9 @@ h2{
         <a class="logo" href="#book">Book<span>My</span>Event</a>
         <ul class="navlist">
             <li><a href="#home">Home</a></li>
-            <li><a href="#book">MyTicke</a></li>
-			<li><a href="login.php"><button class="btn-header" name="login">Login</button></li></a>
+            <li><a href="#book">MyTicket</a></li>
+            <li><a href="#"><?php session_start(); echo $_SESSION['name']; ?></a></li>
+			<li><a href="logout.php"><button class="btn-header" name="login">Logout</button></li></a>
         </ul>
     </header>
     <section class="home" id="home">
@@ -180,13 +181,26 @@ h2{
             <div class="text-center">
                 <h2>Events</h2>
             </div>
+       
             <div class="main-book">
+            <?php  
+           include 'connect.php';
+           
+
+                       
+           $sql = "SELECT * FROM `eventlist` ";
+           $result = mysqli_query($con, $sql);
+       
+      
+           while ($row = mysqli_fetch_array($result)){
+           ?>
                 <div class="book-vr">
-                    <div class="book-img"><img width="150px" width="100px" src="trading.png"></div>
-                    <div class="e_n">Burgar</div>
-                    <div><button class="bookbtn"><a href="book.php">Book Now</a></button></div>
-                </div>
+                    <div class="book-img"><img width="150px" width="100px" src="<?php echo $row['image'];?>"></div>
+                    <div class="e_n"><?php echo $row['Name']; ?></div>
+                    <div><button class="bookbtn"><a href="book.php?id=<?php echo $row['eventId']; ?>">Book Now</a></button></div>
+                </div><?php }?>
             </div>
+            
     </section>
 </body>
 </html>

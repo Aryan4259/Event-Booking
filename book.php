@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -153,6 +155,9 @@ h2{
     text-decoration: none;
     color: #000;
 }
+.hide{
+    display: none;
+}
     </style>
 </head>
 <body>
@@ -172,14 +177,31 @@ h2{
         </div>
             <div class="main-book">
                 <div class="book-vr">
-                    <div class="book-img"><img width="500px" width="500px" src="trading.png"></div>
-                    <div>How many Ticket<input type="number" name="qty"></div>
-                    <div> the discription with the event information</div>
-                    <div> Venue Addres</div>
-                    <div> price</div>
-                    <div><button class="bookbtn"><a href="book.php">Conform Ticket</a></button></div>
+                <?php  
+           include 'connect.php';
+           
+            $id=$_GET['id'];
+                       
+           $sql = "SELECT * FROM `eventlist` where eventId='$id'";
+           $result = mysqli_query($con, $sql);
+       
+      
+           while ($row = mysqli_fetch_array($result)){
+           ?> <form action="bookticket.php" method="Post">
+                <div class="book-img"><img width="500px" width="500px" src="<?php echo $row['image'];?>"></div>
+                    <div>How many Ticket<input type="number" name="qty"  min="1" max="5"></div>
+                    <div> Event Name:<?php echo $row['Name']; ?></div>
+                    <div> <?php echo $row['Description']; ?></div>
+                    <div> Venue :-<?php echo $row['Venue']; ?></div>
+                    <div> price:-<?php echo $row['price']; ?></div>
+                    <input type="text" class="hide" name="ename" value="<?php echo $row['Name']; ?>">
+                    
+                    <input type="text" name="price" class="hide" value="<?php echo $row['price']; ?>">
+                    <div><button class="bookbtn" name="book" class="hide" >Confirm Ticket</button></div>
                 </div>
+            <?php }?>
             </div>
+            
     </section>
 </body>
 </html>
