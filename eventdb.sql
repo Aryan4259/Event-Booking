@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `booked_tickets` (
   `no_of_tickets` int DEFAULT NULL,
   `total` varchar(200) NOT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) 
 
 --
 -- Dumping data for table `booked_tickets`
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `eventlist` (
   `Venue` varchar(50) DEFAULT NULL,
   `price` int DEFAULT NULL,
   PRIMARY KEY (`eventId`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) 
 
 --
 -- Dumping data for table `eventlist`
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `name` varchar(200) NOT NULL,
   `mobile` varchar(200) NOT NULL,
   `pass` varchar(200) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+)
 
 --
 -- Dumping data for table `user`
