@@ -165,7 +165,7 @@ h2{
         <a class="logo" href="#book">Book<span>My</span>Event</a>
         <ul class="navlist">
             <li><a href="#home">Home</a></li>
-            <li><a href="#book">MyTicket</a></li>
+            <li><a href="#book">Events</a></li>
             <li><a href="#"><?php session_start(); echo $_SESSION['name']; ?></a></li>
 			<li><a href="logout.php"><button class="btn-header" name="login">Logout</button></li></a>
         </ul>

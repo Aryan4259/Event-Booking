@@ -118,12 +118,15 @@ section{
     justify-content: start;
     flex-wrap: wrap;
     flex-direction: column;
-    gap: 50px;
+    padding-bottom: 50px;
     align-items: center;
     text-align: center;
     background-size: cover;
     background-position: center;
     border-radius: 30px;
+}
+.book-vr div{
+    padding-bottom: 50px;
 }
 .text{
     width: 100%;
@@ -148,7 +151,7 @@ h2{
     background-color: red;
     font-size: 1.1rem;
     border-radius: 10px;
-    margin-bottom: 50px;
+
     
 }
 .bookbtn a{
@@ -158,6 +161,7 @@ h2{
 .hide{
     display: none;
 }
+
     </style>
 </head>
 <body>
@@ -172,7 +176,7 @@ h2{
     <section class="event" id="home">
         <div class="text">
             <div class="text-center">
-                <h2>Burgar</h2>
+                <h2>Event</h2>
             </div>
         </div>
             <div class="main-book">
@@ -189,7 +193,7 @@ h2{
            while ($row = mysqli_fetch_array($result)){
            ?> <form action="bookticket.php" method="Post">
                 <div class="book-img"><img width="500px" width="500px" src="<?php echo $row['image'];?>"></div>
-                    <div>How many Ticket<input type="number" name="qty"  min="1" max="5"></div>
+                    <div class="how">How many Ticket::<input type="number" name="qty"  min="1" max="100"></div>
                     <div> Event Name:<?php echo $row['Name']; ?></div>
                     <div> <?php echo $row['Description']; ?></div>
                     <div> Venue :-<?php echo $row['Venue']; ?></div>
